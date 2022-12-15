@@ -5,25 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="assets/styles/dist/index.css">
+    <link rel="stylesheet" href="/styles/dist/index.css">
 </head>
 <body>
 
-    <!-- intro section - start -->
-    <section class="intro">
-        <!-- navbar - start -->
-        <nav>
-            <a href="" class="brand">GEEK</a>
+    <!-- navbar - start -->
+    <nav>
+        <a href="" class="brand">GEEK</a>
+        <ul class="desktop-menu">
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#contact">Get in Touch!</a></li>
+        </ul>
+        <a href="" class="cv-btn" download="My CV">
+            My CV
+        </a>
+        <!-- mobile - start -->
+        <div class="hamburger-wrapper">
+            <div class="hamburger">
+                <div class="line top"></div>
+                <div class="line mid"></div>
+                <div class="line bottom"></div>
+            </div>
+        </div>
+        <div class="mobile-menu">
             <ul>
                 <li><a href="#intro">Intro</a></li>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#contact">Get in Touch!</a></li>
+                <li><a href="cv/" download="My CV">My CV</a></li>
             </ul>
-            <a href="" class="cv-btn" download="portfolio">
-                My CV
-            </a>
-        </nav>
-        <!-- navbar - end -->
+        </div>
+        <!-- mobile - end -->
+        <!-- light/dark mode - start -->
+        <div class="mode-wrapper">
+            <div class="mode">
+                <i class=""></i>
+            </div>
+        </div>
+        <!-- light/dark mode - end -->
+    </nav>
+    <!-- navbar - end -->
+
+    <!-- intro section - start -->
+    <section class="intro">
         <!-- intro section content - start -->
         <div class="container">
             <div class="column">
