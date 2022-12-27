@@ -1,3 +1,4 @@
+
 //Fonts
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 $primaryFont: 'IBM Plex Sans Condensed', sans-serif;
@@ -8,23 +9,33 @@ $secondary: #f0f8ff;
 
 :root{
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 body{
-    font-size: 12px;
     font-family: $secondaryFont;
     color: $primary;
     background-color: $secondary;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+blockquote{
+    margin: 0;
 }
 
 a{
     text-decoration: none;
 }
 
+img{
+    user-select: none;
+}
+
 section{
-    height: 100vh;
+    margin: 50px 0;
+    height: auto;
     width: 100vw;
 }
 
@@ -57,6 +68,8 @@ $breakpoints: (
   // Desktops
     xl: 1800px,
   // Large Desktop
+    xxl: 2400px
+  // Extra large desktops
 );
 
 @function container($container-size, $true-val: false) {
@@ -67,13 +80,21 @@ $container-sizes: (
     sm: map-get($breakpoints, sm) - 30px,
     md: map-get($breakpoints, md) - 40px,
     lg: map-get($breakpoints, lg) - 50px,
-    xl: map-get($breakpoints, xl) - 400px
+    xl: map-get($breakpoints, xl) - 400px,
+    xxl: map-get($breakpoints, xxl) - 200px
 );
 
-.container {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    &:not(.is-fluid) {
+.container,
+.inside__container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    
+    display: grid;
+    grid-template-areas: "a a";
+    align-items: center;
+    gap: 10%;
+    &{
         margin: 0 auto;
         @each $bp, $container-size in $container-sizes {
             @include min(#{bp(#{$bp})}) {
@@ -82,110 +103,308 @@ $container-sizes: (
             }
         }
     }
-}
-@each $bp, $container-size in $container-sizes {
-    .container-#{$bp} {
-    margin: 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    width: 100%;
-    $i: index($container-sizes, $bp $container-size);
-    @for $j from $i through length($container-sizes) {
-        @include min(#{bp(nth(nth($container-sizes, $j), 1))}) {
-            max-width: container(#{nth(nth($container-sizes, $j), 1)});
-        }
-    }
+    @media (max-width: 900px) {
+        grid-template-areas: "a";
     }
 }
 
+.column{
+    margin: 0 5%;
+}
 
-nav{
+header{
     position: fixed;
     top: 0;
     width: 100vw;
-    background: $primary;
-    box-shadow: 0px 5px 10px rgba(100,100,100,0.5);
-    padding: 5px 0;
-
-
-    .desktop-menu,
-    .cv-btn,
-    .mobile-menu{
-        display: none;
-    }
-
-    display: grid;
-    grid-template-areas: "a a a";
-    gap: 5px;
-    grid-auto-rows: 50px;
-
-    .brand{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 32px;
-        font-family: $secondaryFont;
-        color: $secondary;
-        font-weight: 900;
-        letter-spacing: 1px;
-    }
-
-    .hamburger-wrapper{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    z-index: 2;
+    
+    nav{
+        position: relative;
         width: 100%;
-        grid-column: span 1 / 7;
-        
-
-        .hamburger{
-            height: 35px;
-            width: 35px;
-            border-radius: 50% 50%;
-            background-color: $secondary;
+        background: $primary;
+        box-shadow: 0px 5px 10px rgba(100,100,100,0.5);
+        padding: 5px 0;
+    
+        .desktop-menu,
+        .mobile-menu{
+            display: none;
+        }
+    
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+        grid-auto-rows: 50px;
+        align-items: center;
+    
+        .brand{
+            grid-column: span 3;
             display: flex;
-            flex-direction: column;
+            text-align: left;
+            align-items: center;
+            font-size: 32px;
+            font-family: $secondaryFont;
+            color: $secondary;
+            font-weight: 900;
+            letter-spacing: 1px;
+            padding-left: 5%;
+        }
+    
+        .cv-btn{
+            border-radius: 4px;
+            background: $secondary;
+            width: 70px;
+            height: 35px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-            .line{
-                width: 60%;
-                background: $primary;
-                height: 2px;
-                border-radius: 5px;
-                position: relative;
+            grid-column: span 1;
             
-                &.top{
-                    top: 7.5px;
-                }
-
-                &.bottom{
-                    bottom: 8.5px;
-                }
-
+            margin: 0 auto;
+    
+            span{
+                font-size: 24px;
+                color: $primary;
+                font-family: $primaryFont;
+                font-weight: 900;    
             }
-
+    
         }
-
-    }
-
-    .mode-wrapper{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-column: span 1 / 8;
-        
-        i{
-            cursor: pointer;
-            font-size: 20px;
-            color: $secondary;
-            padding: 5px 7.5px;
-            border-radius: 50% 50%;
-            border: 2px solid $secondary;
+    
+        .hamburger-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            grid-column: span 1;
+            
+            .hamburger{
+                height: 35px;
+                width: 35px;
+                border-radius: 50% 50%;
+                background-color: $secondary;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    
+                .line{
+                    width: 60%;
+                    background: $primary;
+                    height: 2px;
+                    border-radius: 5px;
+                    position: relative;
+                
+                    &.top{
+                        top: 7.5px;
+                    }
+    
+                    &.bottom{
+                        bottom: 8.5px;
+                    }
+    
+                }
+    
+            }
+    
         }
-
+    
     }
+}
 
+main{
+    position: relative;
+    top: 50px;
+    display: grid;
+    gap: 10%;
+
+    section.intro{
+        .container{
+            .column{
+                i{  
+                    width: 100%;
+                    font-size: 72px;
+                    color: $primary;
+                    text-shadow: 4px 4px 0px rgba($color: $primary, $alpha: .25);
+                    &:nth-child(1){
+                        margin-bottom: 15px;
+                        text-align: right;
+                    }
+                }
+                p{   
+                    font-weight: 500;
+                    font-size: clamp(18pt, 2.5vw, 30pt);
+                    span{
+                        font-size: clamp(72pt, 15vw, 128pt);
+                        font-weight: 900;
+                        font-family: $primaryFont;
+                        text-shadow: 5px 5px rgba($color: $primary, $alpha: .25);
+                    }
+                }
+                .button-group{
+                    width: 100%;
+                    display: grid;
+                    justify-items: end;
+                    gap: 1.5rem;
+                    grid-template-areas: "a" / 10px;
+    
+                    @media (min-width: 600px) {
+                        grid-template-areas: "a a";
+                    }
+    
+                    .btn{
+                        min-width: 175px;
+                        width: 70%;
+                        max-width: 300px;
+    
+                        min-height: 50px;
+                        height: 100%;
+    
+                        border-radius: 4px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        margin: 0;
+    
+                        span{
+                            padding: 10px 0;
+                            font-size: clamp(16pt, 1vw, 20pt);
+                            font-family: $primaryFont;
+                            font-weight: 700;
+                        }
+    
+                        box-shadow: 7.5px 7.5px rgba(100,100,100,0.5);
+    
+                        &:nth-child(1){
+                            background: $primary;
+                            span{
+                                color: $secondary;
+                            }
+                        }
+                        &:nth-child(2){
+                            border: 1px solid $primary;
+                            span{
+                                color: $primary;
+                            }
+                        }
+    
+                    }
+    
+                }
+            }
+        }
+    }
+    section.about{
+        display: grid;
+        gap: 5%;
+        .band{
+            width: 100%;
+            height: auto;
+
+            background: $primary;
+            .container{
+                @media (max-width: 900px) {
+                    gap: 0;
+                }
+                .column{
+                    color: $secondary;
+                    img{
+                        position: relative;
+                        top: -7.5em;
+
+                        border-radius: 4px;
+                        box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, inset 0px 0px 50px rgba(0,0,0,0.75);
+                        //box-shadow: 10px 10px rgba(0,0,0,0.75),10px 10px 10px rgba(0,0,0,0.75),inset 0px 0px 50px rgba(0,0,0,0.75);
+                        
+                        width: 100%;
+                        max-width: 500px;
+                        min-width: 180px;
+                        height: auto;
+                        @media (max-width: 900px) {
+                            max-width: 300px;
+                            top: -2.5em;
+                        }
+                    }
+                    h1{
+                        font-family: $primaryFont;
+                        font-weight: 900;
+                        font-size: clamp(64pt, 15vw, 92pt);
+                        margin: 0;
+                    }
+                    p{
+                        font-size: clamp(14pt, 2.5vw, 18pt);
+                        a{
+                            text-decoration: underline;
+                            color: $secondary;
+                        }
+                        @media (max-width: 900px) {
+                            margin-bottom: 15%;
+                        }
+                    }
+                }
+            }
+        }
+        .inside__container{
+            justify-content: center;
+            text-align: center;
+
+            gap: 5%;
+            .wrapper{
+                display: grid;
+                grid-template-rows: repeat(2, 1fr);
+
+                color: $secondary;
+                padding: 0 2rem;
+                .icon-wrapper{
+                    grid-row: span 1;
+                    display: grid;
+
+                    background: $primary;
+                    border-radius: 4px;
+
+                    height: 125px;
+                    width: 80%;
+                    max-width: 125px;
+
+                    align-items: center;
+                    justify-self: center;
+                    align-self: center;
+                    i{
+                        font-size: 45pt;
+                    }
+                    p{
+                        margin: -10px 10px 5px 10px;
+
+                        font-family: $primaryFont;
+                        font-weight: 700;
+                    }
+                }
+                .text-wrapper{
+                    grid-row: span 1;
+
+                    height: auto;
+                    width: 100%;
+
+                    border-radius: 4px;
+                    background: $primary;
+                    
+                    margin: 0 auto;
+                    
+                    font-size: clamp(14pt, 2.5vw, 20pt);
+                    font-family: $secondaryFont;
+                }
+                @media (min-width: 900px) {
+                    grid-template-columns: repeat(3, 1fr);
+                    .icon-wrapper{
+                        grid-column: span 1;
+                    }
+                    .text-wrapper{
+                        grid-column: span 2;
+                    }
+                }
+            }
+        }
+    }
 }
