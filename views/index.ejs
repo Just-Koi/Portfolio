@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-
+    <!-- 
+        TODO:
+        - Make navigation - Add animations - Add hyperlinks
+    -->
     <!-- navbar - start -->
     <header>
         <nav>
@@ -40,17 +43,17 @@
                     <li><a href="#intro">Intro</a></li>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#contact">Get in Touch!</a></li>
+                    <li><a href="" download="cv"><button>Download my CV</button></a></li>
                 </ul>
             </div>
             <!-- mobile - end -->
         </nav>
     </header>
     <!-- navbar - end -->
-
     <!-- main - start -->
     <main>
         <!-- intro section - start -->
-        <section class="intro">
+        <section class="intro" id="intro">
             <!-- intro section content - start -->
             <div class="container">
                 <div class="column">
@@ -96,7 +99,7 @@
         </section>
         <!-- intro section - end -->
         <!-- about section - start -->
-        <section class="about">
+        <section class="about" id="about">
             <!-- text - start -->
             <div class="band">
                 <div class="container">
@@ -114,6 +117,10 @@
             <!-- text - end -->
             <!-- skills - start -->
             <div class="inside__container">
+                <div class="icons__container">
+                    <i class="fas fa-xmark"></i>
+                    <i class="bx bx-hash"></i>
+                </div>
                 <div class="wrapper">
                     <div class="icon-wrapper">
                         <i class='bx bx-shape-circle' ></i>
@@ -121,7 +128,7 @@
                     </div>
                     <div class="text-wrapper">
                         <p>
-                            My design skills are good but I'm still learning! I can make design for you or maybe a prototype that I guarantee you will be happy of and if you aren't, then I'll do everything to make you fell satisfied with end product.
+                            My design skills are good but I'm still learning! I can make design for you or maybe a prototype that I guarantee you will be happy of and if you aren't, then I'll do everything to make you fell satisfied with end product. I start from setting up the project (research, user stories, wireframe, getting needed materials), my next step is doing the actual design (hifi template in Figma) and I finish on making prototype.
                         </p>
                     </div>
                 </div>
@@ -132,7 +139,7 @@
                     </div>
                     <div class="text-wrapper">
                         <p>
-
+                            I have experience in building front-end and back-end web applications. I can make for you a simple landing page or whole blog. Decision is up to you, I'm happy that I can help you. I code it myself in my favorite code editor (Visual Studio Code), I start my code project from setting up document where I write down things and skills that I will need to finish my project, after that I start coding!
                         </p>
                     </div>
                 </div>
@@ -143,7 +150,7 @@
                     </div>
                     <div class="text-wrapper">
                         <p>
-
+                            Well, I don't like Wordpress but if you want to I can make you an e-commerce store using it.
                         </p>
                     </div>
                 </div>
@@ -154,18 +161,7 @@
                     </div>
                     <div class="text-wrapper">
                         <p>
-
-                        </p>
-                    </div>
-                </div>
-                <div class="wrapper">
-                    <div class="icon-wrapper">
-                        <i class='bx bx-cuboid' ></i>
-                        <p>3D Editing Skills</p>
-                    </div>
-                    <div class="text-wrapper">
-                        <p>
-
+                            Linux is my daily driver, I'm in love with it! I call myself an Linux enthusiast, my favorite ditribution is Fedora, which is based on RedHat and my favorite DE is i3. 
                         </p>
                     </div>
                 </div>
@@ -176,9 +172,13 @@
                     </div>
                     <div class="text-wrapper">
                         <p>
-
+                            I'm not an expert but I can make some photo editing if needed.
                         </p>
                     </div>
+                </div>
+                <div class="icons__container">
+                    <i class="bx bx-hash"></i>
+                    <i class="fas fa-xmark"></i>
                 </div>
             </div>
             <!-- skills - start -->
@@ -186,59 +186,88 @@
         <!-- about section - end -->
     </main>
     <!-- main - end -->
-
-    <!-- footer - start 
-    <footer>
-        <!-- contact container - start 
+    <!-- footer - start -->
+    <footer id="contact">
+        <!-- contact container - start -->
         <div class="container">
             <div class="column">
-                <form action="" method="post">
+                <h1>Get in Touch!</h1>
+                <form action="/contact" method="post">
                     <div class="input-group">
-                        <input type="email" name="" id="">
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <div class="input-tag">
+                            <span>Email</span>
+                        </div>
+                        <input type="email" name="user_mail" placeholder="example@email.com">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-tag">
+                            <span>
+                                Message
+                            </span>
+                        </div>
+                        <textarea name="user_message" cols="30" rows="10" placeholder="Start by typing here.."></textarea>
                     </div>
                     <button type="submit">
-                        Say Hello_
+                        Say Hello<span class="blink">_</span>
                     </button>
                 </form>
             </div>
             <div class="column">
                 <div class="info-wrapper">
-                    <p></p>
+                    <p>
+                        Hey! You want to get in touch with me? You can contact me through my <a href="mailto:kacper.d3veloper@gmail.com"> mail </a>or my social media. If you write to me on my social media and I didn't respond to it, then probably you went to my spam inbox :/ If you don't get an respond from me for more than two days you can try to <a href="tel:+48735208034"> call me</a>. 
+                    </p>
                 </div>
                 <div class="social-wrapper">
-                    <div class="icon-wrapper">
-                        <i class=""></i>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class=""></i>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class=""></i>
-                    </div>
-                    <div class="icon-wrapper">
-                        <i class=""></i>
-                    </div>
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-whatsapp-square"></i>
+                    <i class="fab fa-github-square"></i>
+                    <i class="fab fa-reddit-square"></i>
                 </div>
                 <div class="bottom">
-                    <a href="" class="cv-btn" download="Kacper M. CV">
-                        Download my CV
+                    <a href="" download="Kacper M. CV">
+                        <button class="cv-btn">Download my CV</button>
                     </a>
-                    <div class="contact-info">
-                        <p></p>
-                    </div>
+                    <address>
+                        <a href="mailto:kacper.d3veloper@gmail.com">kacper.d3veloper@gmail.com</a> 
+                        <br>
+                        <a href="tel:+48735208034">+48 735 208 034</a>
+                    </address>
                 </div>
             </div>
         </div>
         <!-- contact container - end -->
-        <!-- foot - start 
-        <div class="bottom">
-            <div class="container">
-                <p></p>
+        <!-- foot - start -->
+        <div class="foot">
+            <div class="inside__container">
+                <a href="https://www.forbes.com/sites/alejandrocremades/2019/02/20/15-powerful-quotes-on-success/?sh=6ea84a9e1c98" target="_blank">
+                    <blockquote>
+                        ,,Success is No Accident"
+                        <span>- Famous soccer athlete, Pele who appeared to be born with plenty of natural talent, continues this quote by adding “It is hard work, perseverance, learning, studying, sacrifice and most of all, love of what you are doing.”</span>
+                    </blockquote>
+                </a>
             </div>
         </div>
-        <!-- foot - end 
+        <!-- foot - end -->
     </footer>
     <!-- footer - end -->
+    <!-- sctipts - start -->
+    <script>
+        function mobileMenu(){
+            const hamburgerMenu = document.querySelector('.hamburger');
+            const menu = document.querySelector('.mobile-menu');
+            const main = document.querySelector('main');
+            const header = document.querySelector('header');
+            const footer = document.querySelector('footer');
+            hamburgerMenu.addEventListener('click', () => {
+                hamburgerMenu.classList.toggle('toggle');
+                main.classList.toggle('pushed');
+                footer.classList.toggle('pushed');
+                menu.classList.toggle('active');
+            });
+        }
+        mobileMenu();
+    </script>
+    <!-- scripts - end -->
 </body>
 </html>
