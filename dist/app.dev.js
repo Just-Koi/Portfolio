@@ -33,7 +33,7 @@ app.post('/contact', function (req, res) {
     from: 'mailtransporter61@gmail.com',
     to: 'kacper5marciniak@gmail.com, kacper.d3veloper@gmail.com, ' + req.body.email,
     subject: 'Waiting for response',
-    text: 'Thanks for sending my your message! I will read it ASAP ;) Your mail: ' + req.body.email + ' Your message content: ' + req.body.message
+    text: 'Thanks for sending my your message! I will read it ASAP ;) ' + '\n' + 'Your mail: ' + req.body.email + '\n' + ' Your message content: ' + req.body.message
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
