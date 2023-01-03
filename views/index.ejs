@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="keywords" content="kacper, marciniak, portfolio, fullstack, backend, frontend, developer, hire, freelancer">
+    <meta name="description" content="
+                                This is my portofolio website &OpenCurlyDoubleQuote;DEMO&CloseCurlyDoubleQuote;. 
+                                It means that it's a project that I just did to gain more experience.
+                                ">
+    <!-- website title -->
+    <title>Kacper Marciniak - Portfolio Demo Project</title>
+    <!-- style -->
     <link rel="stylesheet" href="/styles/dist/index.css">
     <!-- boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -12,41 +20,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <!-- 
-        TODO:
-        - Make navigation - Add animations - Add hyperlinks
-    -->
     <!-- navbar - start -->
     <header>
         <nav>
-            <a href="" class="brand">GEEK</a>
-            <ul class="desktop-menu">
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#contact">Get in Touch!</a></li>
-            </ul>
-            <!-- cv button - start -->
-            <a href="cv/" download="cv" class="cv-btn" role="button">
-                <span>CV</span>
-            </a>
-            <!-- cv button - end -->
-            <!-- mobile - start -->
-            <div class="hamburger-wrapper">
-                <div class="hamburger">
-                    <div class="line top"></div>
-                    <div class="line mid"></div>
-                    <div class="line bottom"></div>
-                </div>
-            </div>
-            <div class="mobile-menu">
-                <ul>
+            <div class="nav__container">
+                <a href="#" class="brand">GEEK</a>
+                <ul class="desktop-menu">
                     <li><a href="#intro">Intro</a></li>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#contact">Get in Touch!</a></li>
-                    <li><a href="" download="cv"><button>Download my CV</button></a></li>
                 </ul>
+                <!-- cv button - start -->
+                <a href="" download="cv/CV_Kacper_Marciniak.pdf" class="cv-btn__wrapper">
+                    <button class="cv-btn">Download my CV</button>
+                </a>
+                <!-- cv button - end -->
+                <!-- mobile - start -->
+                <div class="hamburger-wrapper">
+                    <div class="hamburger">
+                        <div class="line top"></div>
+                        <div class="line mid"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="mobile-menu">
+                    <ul>
+                        <li><a href="#intro">Intro</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#contact">Get in Touch!</a></li>
+                        <li><a href="" download="cv/CV_Kacper_Marciniak.pdf"><button>Download my CV</button></a></li>
+                    </ul>
+                </div>
+                <!-- mobile - end -->
             </div>
-            <!-- mobile - end -->
         </nav>
     </header>
     <!-- navbar - end -->
@@ -63,10 +70,10 @@
                         <span>GEEK</span>
                     </p>
                     <div class="button-group">
-                        <a href="" download="portfolio" class="btn" role="button">
+                        <a href="" download="cv/CV_Kacper_Marciniak.pdf" class="btn" role="button">
                             <span>Download my CV</span>
                         </a>
-                        <a href="" class="btn" role="button">
+                        <a href="#contact" class="btn" role="button">
                             <span>Say Hello_!</span>
                         </a>
                     </div>
@@ -109,7 +116,7 @@
                     <div class="column">
                         <h1>Learn About Me </h1>
                         <p>
-                            I'm a young developer with ambition. Don't look at my age, look at my skills. I can build for you a fullstack web app from just a sketch (wireframe) to full working web application. I'm creative, serious about my job and responsible for my projects. Do you want to know more ? Put me in test and <a href="">get in touch with me!</a> 
+                            I'm a young developer with ambition. Don't look at my age, look at my skills. I can build for you a fullstack web app from just a sketch (wireframe) to full working web application. I'm creative, serious about my job and responsible for my projects. Do you want to know more ? Put me in test and <a href="#contact">get in touch with me!</a> 
                         </p> 
                     </div>
                 </div>
@@ -197,7 +204,7 @@
                         <div class="input-tag">
                             <span>Email</span>
                         </div>
-                        <input type="email" name="user_mail" placeholder="example@email.com">
+                        <input type="email" name="email" placeholder="example@email.com">
                     </div>
                     <div class="input-group">
                         <div class="input-tag">
@@ -205,7 +212,7 @@
                                 Message
                             </span>
                         </div>
-                        <textarea name="user_message" cols="30" rows="10" placeholder="Start by typing here.."></textarea>
+                        <textarea name="message" cols="30" rows="10" placeholder="Start by typing here.."></textarea>
                     </div>
                     <button type="submit">
                         Say Hello<span class="blink">_</span>
@@ -219,13 +226,12 @@
                     </p>
                 </div>
                 <div class="social-wrapper">
-                    <i class="fab fa-facebook-square"></i>
-                    <i class="fab fa-whatsapp-square"></i>
-                    <i class="fab fa-github-square"></i>
-                    <i class="fab fa-reddit-square"></i>
+                    <a href="https://wa.me/48735208034" target="_blank"><i class="fab fa-whatsapp-square"></i></a>
+                    <a href="https://github.com/Just-Koi" target="_blank"><i class="fab fa-github-square"></i></a>
+                    <a href="https://www.reddit.com/user/RyoshiTheHunter" target="_blank"><i class="fab fa-reddit-square"></i></a>
                 </div>
                 <div class="bottom">
-                    <a href="" download="Kacper M. CV">
+                    <a href="" download="cv/CV_Kacper_Marciniak.pdf">
                         <button class="cv-btn">Download my CV</button>
                     </a>
                     <address>
@@ -257,7 +263,6 @@
             const hamburgerMenu = document.querySelector('.hamburger');
             const menu = document.querySelector('.mobile-menu');
             const main = document.querySelector('main');
-            const header = document.querySelector('header');
             const footer = document.querySelector('footer');
             hamburgerMenu.addEventListener('click', () => {
                 hamburgerMenu.classList.toggle('toggle');

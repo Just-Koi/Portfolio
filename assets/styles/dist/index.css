@@ -20,6 +20,7 @@ blockquote {
 
 a {
   text-decoration: none;
+  user-select: none;
 }
 
 img {
@@ -33,7 +34,8 @@ section {
 }
 
 .container,
-.inside__container {
+.inside__container,
+.nav__container {
   margin: 0 auto;
   width: 100%;
   height: 100%;
@@ -43,47 +45,54 @@ section {
   gap: 10%;
 }
 .container,
-.inside__container {
+.inside__container,
+.nav__container {
   margin: 0 auto;
 }
 @media only screen and (min-width: 600px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     width: 100%;
     max-width: 570px;
   }
 }
 @media only screen and (min-width: 900px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     width: 100%;
     max-width: 860px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     width: 100%;
     max-width: 1150px;
   }
 }
 @media only screen and (min-width: 1800px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     width: 100%;
     max-width: 1400px;
   }
 }
 @media only screen and (min-width: 2400px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     width: 100%;
     max-width: 2200px;
   }
 }
 @media (max-width: 900px) {
   .container,
-.inside__container {
+.inside__container,
+.nav__container {
     grid-template-areas: "a";
   }
 }
@@ -107,16 +116,16 @@ header nav {
   background: #272727;
   box-shadow: 0px 5px 10px rgba(100, 100, 100, 0.5);
   padding: 5px 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+}
+header nav .nav__container {
+  grid-template-columns: repeat(4, 1fr);
   gap: 5px;
-  grid-auto-rows: 50px;
   align-items: center;
 }
-header nav .desktop-menu {
+header nav .nav__container .desktop-menu {
   display: none;
 }
-header nav .mobile-menu {
+header nav .nav__container .mobile-menu {
   position: fixed;
   top: 0;
   right: 0;
@@ -131,20 +140,20 @@ header nav .mobile-menu {
   align-items: center;
   z-index: 0;
 }
-header nav .mobile-menu ul {
+header nav .nav__container .mobile-menu ul {
   display: grid;
   gap: 2rem;
   list-style: none;
   padding: 0;
 }
-header nav .mobile-menu ul li {
+header nav .nav__container .mobile-menu ul li {
   text-align: center;
 }
-header nav .mobile-menu ul li a {
+header nav .nav__container .mobile-menu ul li a {
   font-size: 20pt;
   color: #f0f8ff;
 }
-header nav .mobile-menu ul li a button {
+header nav .nav__container .mobile-menu ul li a button {
   padding: 10px 12px;
   background: #f0f8ff;
   border-radius: 4px;
@@ -154,39 +163,52 @@ header nav .mobile-menu ul li a button {
   font-weight: 500;
   cursor: pointer;
 }
-header nav .mobile-menu.active {
+header nav .nav__container .mobile-menu.active {
   transform: translateX(0);
 }
-header nav .brand {
+header nav .nav__container .brand {
   grid-column: span 3;
   display: flex;
   text-align: left;
   align-items: center;
-  font-size: 32px;
+  font-size: clamp(20pt, 2.5vw, 32pt);
   font-family: "IBM Plex Sans", sans-serif;
   color: #f0f8ff;
   font-weight: 900;
   letter-spacing: 1px;
   padding-left: 5%;
 }
-header nav .cv-btn {
+header nav .nav__container .cv-btn__wrapper {
+  display: none;
+}
+header nav .nav__container .cv-btn__wrapper .cv-btn {
   border-radius: 4px;
+  border: none;
   background: #f0f8ff;
-  width: 70px;
-  height: 35px;
+  width: 70%;
+  max-width: 250px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  grid-column: span 1;
   margin: 0 auto;
-}
-header nav .cv-btn span {
-  font-size: 24px;
+  padding: 10px 12px;
+  font-size: clamp(10pt, 1.5vw, 16pt);
   color: #272727;
   font-family: "IBM Plex Sans Condensed", sans-serif;
   font-weight: 900;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
-header nav .hamburger-wrapper {
+header nav .nav__container .cv-btn__wrapper .cv-btn:hover {
+  background: rgba(240, 248, 255, 0.75);
+}
+@media (min-width: 700px) {
+  header nav .nav__container .cv-btn__wrapper {
+    display: block;
+  }
+}
+header nav .nav__container .hamburger-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,7 +216,7 @@ header nav .hamburger-wrapper {
   width: 100%;
   z-index: 2;
 }
-header nav .hamburger-wrapper .hamburger {
+header nav .nav__container .hamburger-wrapper .hamburger {
   height: 35px;
   width: 35px;
   border-radius: 50% 50%;
@@ -207,7 +229,7 @@ header nav .hamburger-wrapper .hamburger {
   cursor: pointer;
   position: relative;
 }
-header nav .hamburger-wrapper .hamburger .line {
+header nav .nav__container .hamburger-wrapper .hamburger .line {
   height: 2px;
   width: 60%;
   background: #272727;
@@ -215,25 +237,56 @@ header nav .hamburger-wrapper .hamburger .line {
   position: relative;
   transition: all 0.3s ease;
 }
-header nav .hamburger-wrapper .hamburger .line.top {
+header nav .nav__container .hamburger-wrapper .hamburger .line.top {
   top: 7.5px;
 }
-header nav .hamburger-wrapper .hamburger .line.bottom {
+header nav .nav__container .hamburger-wrapper .hamburger .line.bottom {
   bottom: 8.5px;
 }
-header nav .hamburger-wrapper .hamburger.toggle .line.top {
+header nav .nav__container .hamburger-wrapper .hamburger.toggle .line.top {
   position: absolute;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
 }
-header nav .hamburger-wrapper .hamburger.toggle .line.mid {
+header nav .nav__container .hamburger-wrapper .hamburger.toggle .line.mid {
   transform: translateX(100%);
   opacity: 0;
 }
-header nav .hamburger-wrapper .hamburger.toggle .line.bottom {
+header nav .nav__container .hamburger-wrapper .hamburger.toggle .line.bottom {
   position: absolute;
   top: 50%;
   transform: translateY(-50%) rotate(-45deg);
+}
+@media (min-width: 700px) {
+  header nav .nav__container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  header nav .nav__container .mobile-menu,
+header nav .nav__container .mobile-menu.active,
+header nav .nav__container .hamburger-wrapper {
+    display: none;
+  }
+  header nav .nav__container .brand {
+    grid-column: span 2;
+  }
+  header nav .nav__container .desktop-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: end;
+    grid-column: span 2;
+    padding: 0;
+    width: 100%;
+    max-width: 500px;
+  }
+  header nav .nav__container .desktop-menu li a {
+    font-size: clamp(12pt, 1.5vw, 18pt);
+    color: #f0f8ff;
+    transition: color 0.3s ease;
+  }
+  header nav .nav__container .desktop-menu li a:hover {
+    color: rgba(240, 248, 255, 0.75);
+  }
 }
 
 main {
@@ -286,6 +339,7 @@ main section.intro .container .column .button-group .btn {
   justify-content: center;
   align-items: center;
   margin: 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 7.5px 7.5px rgba(100, 100, 100, 0.5);
 }
 main section.intro .container .column .button-group .btn span {
@@ -294,17 +348,26 @@ main section.intro .container .column .button-group .btn span {
   font-family: "IBM Plex Sans Condensed", sans-serif;
   font-weight: 700;
 }
+main section.intro .container .column .button-group .btn:hover {
+  box-shadow: 0px 0px 20px rgba(100, 100, 100, 0.75);
+}
 main section.intro .container .column .button-group .btn:nth-child(1) {
   background: #272727;
 }
 main section.intro .container .column .button-group .btn:nth-child(1) span {
   color: #f0f8ff;
 }
+main section.intro .container .column .button-group .btn:nth-child(1):hover {
+  background: rgba(39, 39, 39, 0.8);
+}
 main section.intro .container .column .button-group .btn:nth-child(2) {
   border: 1px solid #272727;
 }
 main section.intro .container .column .button-group .btn:nth-child(2) span {
   color: #272727;
+}
+main section.intro .container .column .button-group .btn:nth-child(2):hover {
+  background: rgba(39, 39, 39, 0.05);
 }
 main section.about {
   display: flex;
@@ -352,6 +415,10 @@ main section.about .band .container .column p {
 main section.about .band .container .column p a {
   text-decoration: underline;
   color: #f0f8ff;
+  transition: color 0.3s ease;
+}
+main section.about .band .container .column p a:hover {
+  color: rgba(240, 248, 255, 0.75);
 }
 @media (max-width: 900px) {
   main section.about .band .container .column p {
@@ -364,6 +431,8 @@ main section.about .inside__container {
   gap: 2.5%;
 }
 main section.about .inside__container .wrapper {
+  cursor: default;
+  user-select: none;
   display: flex;
   flex-direction: column;
   color: #f0f8ff;
@@ -448,6 +517,7 @@ footer .container .column h1 {
   font-size: clamp(64pt, 2.5vw, 128pt);
   line-height: 1.2em;
   margin: 0.5em 0 0.25em 0;
+  cursor: default;
 }
 footer .container .column form {
   padding: 0;
@@ -476,15 +546,21 @@ footer .container .column form .input-group .input-tag span {
   font-family: "IBM Plex Sans Condensed", sans-serif;
   font-weight: 900;
   font-size: clamp(10pt, 2.5vw, 14pt);
+  user-select: none;
 }
 footer .container .column form .input-group input,
 footer .container .column form .input-group textarea {
   width: 100%;
   background: #f0f8ff;
-  border: 2px solid #272727;
+  border: 2px solid #f0f8ff;
   border-radius: 8px;
   font-size: clamp(12pt, 1.5vw, 16pt);
   font-family: "IBM Plex Sans", sans-serif;
+  transition: background 0.3s ease;
+}
+footer .container .column form .input-group input:is(:hover, :focus, :active),
+footer .container .column form .input-group textarea:is(:hover, :focus, :active) {
+  background: rgba(240, 248, 255, 0.75);
 }
 footer .container .column form .input-group input[type=email] {
   padding: 18px 12px;
@@ -493,6 +569,11 @@ footer .container .column form .input-group input[type=email] {
 footer .container .column form .input-group textarea {
   padding: 32px 12px 8px;
   resize: none;
+}
+footer .container .column form .input-group input:is(:focus, :active),
+footer .container .column form .input-group textarea:is(:focus, :active) {
+  outline: none;
+  box-shadow: none;
 }
 footer .container .column form button[type=submit] {
   display: flex;
@@ -511,6 +592,11 @@ footer .container .column form button[type=submit] {
   font-weight: 900;
   font-size: clamp(14pt, 2.5vw, 18pt);
   cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+footer .container .column form button[type=submit]:hover {
+  box-shadow: 0px 0px 10px rgba(240, 248, 255, 0.25);
+  background: rgba(240, 248, 255, 0.75);
 }
 @media (max-width: 340px) {
   footer .container .column form {
@@ -525,6 +611,10 @@ footer .container .column .info-wrapper p {
 footer .container .column .info-wrapper p a {
   color: rgba(240, 248, 255, 0.5);
   text-decoration: underline;
+  transition: color 0.3s ease;
+}
+footer .container .column .info-wrapper p a:hover {
+  color: #f0f8ff;
 }
 footer .container .column .social-wrapper {
   display: grid;
@@ -536,6 +626,11 @@ footer .container .column .social-wrapper i {
   color: #f0f8ff;
   font-size: clamp(64pt, 1.5vw, 128pt);
   text-shadow: 10px 10px 0px rgba(240, 248, 255, 0.25);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+footer .container .column .social-wrapper i:hover {
+  color: rgba(240, 248, 255, 0.75);
+  text-shadow: 0px 0px 10px rgba(240, 248, 255, 0.25);
 }
 @media (max-width: 400px) {
   footer .container .column .social-wrapper {
@@ -557,6 +652,11 @@ footer .container .column .bottom a .cv-btn {
   font-family: "IBM Plex Sans Condensed", sans-serif;
   font-weight: 900;
   font-size: clamp(16pt, 2.5vw, 20pt);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+footer .container .column .bottom a .cv-btn:hover {
+  box-shadow: 0px 0px 15px rgba(240, 248, 255, 0.25);
+  background: rgba(240, 248, 255, 0.75);
 }
 footer .container .column .bottom address {
   margin: 3em 0;
@@ -565,6 +665,10 @@ footer .container .column .bottom address a {
   font-size: clamp(14pt, 2.5vw, 18pt);
   color: #f0f8ff;
   text-decoration: underline;
+  transition: color 0.3s ease;
+}
+footer .container .column .bottom address a:hover {
+  color: rgba(240, 248, 255, 0.5);
 }
 footer .foot {
   background: #191919;
@@ -588,8 +692,15 @@ footer .foot .inside__container a blockquote span {
   font-style: normal;
 }
 
-header.pushed,
 main.pushed,
 footer.pushed {
   transform: translateX(-70vw);
+}
+@media (min-width: 700px) {
+  main.pushed main.pushed,
+main.pushed footer.pushed,
+footer.pushed main.pushed,
+footer.pushed footer.pushed {
+    transform: translateX(0vw);
+  }
 }
