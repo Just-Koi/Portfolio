@@ -46,9 +46,10 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Portfolio" });
 });
 
-// server
+/* server
 const hostname = '127.0.0.1';
-const port = 3000;
+const port =  4000;
 app.listen(port, () => {
     console.log('Aapplication is running on port https://' + hostname + ':' + port);
 });
+*/
